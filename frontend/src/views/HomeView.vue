@@ -1,16 +1,22 @@
 <script setup lang="ts">
-const baseURL = 'localhost:3000'
+const baseURL = 'http://localhost:3000'
 const onFileChanged = async (event: Event) => {
-  const target = event.target
-  console.log(target.files[0])
-
-  /* await fetch(`${baseURL}/upload-file`, { */
-  /*   method: 'POST', */
-  /*   headers: { */
-  /*     'Content-Type': 'application/json' */
-  /*   }, */
-  /*   body: file */
-  /* }) */
+  const target = event.target as HTMLInputElement
+  const files = target.files
+  if (!files || files.length < 0) {
+    console.error('Missing file')
+    return
+  }
+  const formData = new FormData()
+  formData.append('image', files[0])
+  try {
+    await fetch(`${baseURL}/upload`, {
+      method: 'POST',
+      body: formData
+    })
+  } catch (e) {
+    console.error(e)
+  }
 }
 </script>
 

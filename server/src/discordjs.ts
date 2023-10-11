@@ -2,10 +2,7 @@
 import * as dotenv from 'dotenv';
 import { Client, Collection, Events, GatewayIntentBits } from 'discord.js';
 import { commands } from './services/commandsCollector';
-
-interface FixingDiscordJSDocsBadExamplesType extends Client {
-    commands: Collection<string, any>;
-}
+import { FixingDiscordJSDocsBadExamplesType } from './types/DiscordJS';
 
 dotenv.config();
 // Create a new client instance
@@ -67,3 +64,5 @@ client.on(Events.InteractionCreate, async (interaction) => {
 });
 
 client.login(token);
+
+export default client;

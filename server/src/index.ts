@@ -1,2 +1,2 @@
-import './initDiscordJS';
-import './initServer';
+import './discordjs';
+import './server';
