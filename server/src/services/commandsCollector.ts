@@ -2,6 +2,7 @@ import { ChatInputCommandInteraction, Client, SlashCommandBuilder } from 'discor
 import { calculateTdee } from './commands/tdee';
 import { stealEmoji } from './commands/steal';
 import { postRandomImage } from './commands/postRandomImage';
+import { parseTwt } from './commands/parseTwt';
 
 type Commands = {
     data: Partial<SlashCommandBuilder>;
@@ -16,4 +17,4 @@ const ping = {
     },
 };
 
-export const commands: Commands[] = [ping, calculateTdee, stealEmoji, postRandomImage];
+export const commands: Commands[] = [ping, calculateTdee, stealEmoji, postRandomImage, parseTwt];

@@ -5,5 +5,8 @@ export function parseTwitterLink(link: string) {
     const twtSiteWithPreviews = 'https://vxtwitter.com';
 
     const newStr = link.replace(BASE_REGEX, twtSiteWithPreviews);
+    if (!newStr) {
+        throw new Error('Not a valid twitter link');
+    }
     return newStr;
 }

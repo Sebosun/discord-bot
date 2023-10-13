@@ -68,11 +68,10 @@ export const calculateTdee = {
             return;
         }
 
-        let tdee: number;
+        // default val = sedentary
+        let tdee = bmr * 1.2;
 
-        if (exercise === 'sedentary') {
-            tdee = bmr * 1.2;
-        } else if (exercise === 'light') {
+        if (exercise === 'light') {
             tdee = bmr * 1.375;
         } else if (exercise === 'moderate') {
             tdee = bmr * 1.55;
