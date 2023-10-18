@@ -1,7 +1,8 @@
 import { ChatInputCommandInteraction, Client, SlashCommandBuilder } from 'discord.js';
 import { calculateTdee } from './commands/tdee';
 import { stealEmoji } from './commands/steal';
-import { postRandomImage } from './commands/postRandomImage';
+import { postRandomDuck } from './commands/postRandomDuckImage';
+import { postRandomCat } from './commands/postRandomCatImage';
 import { parseTwt } from './commands/parseTwt';
 
 type Commands = {
@@ -17,4 +18,4 @@ const ping = {
     },
 };
 
-export const commands: Commands[] = [ping, calculateTdee, stealEmoji, postRandomImage, parseTwt];
+export const commands: Commands[] = [ping, calculateTdee, stealEmoji, postRandomDuck, postRandomCat, parseTwt];

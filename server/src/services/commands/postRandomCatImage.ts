@@ -1,11 +1,11 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
-import { getRandomImage } from '../../helpers/getRandomImage';
+import { getRandomCatImage } from '../../helpers/getRandomImage';
 import { getURLAsBuffer } from '../../helpers/getURLAsBuffer';
 
-export const postRandomImage = {
-    data: new SlashCommandBuilder().setName('random-animal-img').setDescription('Post random image from folder'),
+export const postRandomCat = {
+    data: new SlashCommandBuilder().setName('random-cat').setDescription('Post random cat image'),
     async execute(interaction: ChatInputCommandInteraction) {
-        const img = await getRandomImage();
+        const img = await getRandomCatImage();
         if (!img.url) {
             await interaction.reply("Couldn't find img");
             return;

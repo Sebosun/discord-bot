@@ -81,7 +81,7 @@ export const calculateTdee = {
             tdee = bmr * 1.9;
         }
 
-        const bmi = getBmi(weight, height);
+        const bmi = Math.floor(getBmi(weight, height));
 
         await interaction.reply(`Your TDEE is ${Math.round(tdee)}kcal. Your BMI is ${bmi}`);
     },
