@@ -52,6 +52,8 @@ pids
 **/node_modules
 **/storybook-static
 
+**/uploads
+
 staged-txns.txt
 
 tsconfig.tsbuildinfo
