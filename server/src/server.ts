@@ -1,12 +1,15 @@
 import express from 'express';
 import router from './server/router';
 import cors from 'cors';
+import * as dotenv from 'dotenv';
 
-const port = 3000;
+dotenv.config();
+
+const port = 4000;
 
 const app = express();
 
-app.use(express.json()); // Middleware to parse JSON data
+app.use(express.json()); // Middleware to parse JSON datap
 app.use(cors());
 
 app.use('/', router);

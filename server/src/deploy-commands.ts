@@ -36,7 +36,9 @@ console.log(commandsJsonified);
 
         // The put method is used to fully refresh all commands in the guild with the current set
         /* const body = commandsJsonified; */
-        const data = await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandsJsonified });
+        /* const data = await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandsJsonified }); */
+        const data = await rest.put(Routes.applicationCommands(clientId), { body: commandsJsonified });
+        /* const data = await rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commandsJsonified }); */
         if (Array.isArray(data)) {
             console.log(`Successfully reloaded ${data.length} application (/) commands.`);
         }

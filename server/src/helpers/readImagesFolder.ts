@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from 'fs';
 
-const imagesFolderPath = '/home/seb/Pictures/Images';
+const imagesFolderPath = '/home/seb/Pictures/why-animal';
 
 function getRandomInt(max: number) {
     return Math.floor(Math.random() * max);

@@ -1,7 +1,6 @@
 const BASE_REGEX =
     /https?:\/\/(?:(?:www|m(?:obile)?)\.)?(?:twitter\.com|twitter3e4tixl4xyajtrzo62zg5vztmjuricljdp2c5kshju4avyoid\.onion|x\.com)/;
 
-/* const queryReg = /(\?.+)/ */
 const queryReg = /\?.+/g;
 const removeQueryFromUrl = (link: string) => link.replace(queryReg, '');
 
