@@ -26,23 +26,6 @@ type DummyType = {
     url: string;
 };
 
-let duckImages: DummyType[] = [];
-
-export async function getAllDuckImages() {
-    if (duckImages.length) {
-        return duckImages;
-    }
-    try {
-        const imgItems = await DuckImageKit.listFiles({
-            skip: 0,
-        });
-        duckImages = imgItems;
-        return imgItems;
-    } catch (e) {
-        throw new Error('Couldnt find images');
-    }
-}
-
 let catImages: DummyType[] = [];
 
 const CatImageKit = new ImageKit({
@@ -60,6 +43,23 @@ export async function getAllCatImages() {
             skip: 0,
         });
         catImages = imgItems;
+        return imgItems;
+    } catch (e) {
+        throw new Error('Couldnt find images');
+    }
+}
+
+let duckImages: DummyType[] = [];
+
+export async function getAllDuckImages() {
+    if (duckImages.length) {
+        return duckImages;
+    }
+    try {
+        const imgItems = await DuckImageKit.listFiles({
+            skip: 0,
+        });
+        duckImages = imgItems;
         return imgItems;
     } catch (e) {
         throw new Error('Couldnt find images');
