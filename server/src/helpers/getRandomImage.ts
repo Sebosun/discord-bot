@@ -1,5 +1,4 @@
-import { getAllCatImages } from '../services/catImageKit';
-import { getAllDuckImages } from '../services/imagekit';
+import { getAllCatImages, getAllDuckImages } from '../services/imagekit';
 
 export async function getRandomDuckImage() {
     const allImages = await getAllDuckImages();

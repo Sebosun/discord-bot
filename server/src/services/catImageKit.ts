@@ -27,6 +27,7 @@ const CatImageKit = new ImageKit({
 });
 
 export async function getAllCatImages() {
+    console.log(catImages);
     if (catImages.length) {
         return catImages;
     }
