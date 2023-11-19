@@ -4,6 +4,8 @@ import { stealEmoji } from './commands/steal';
 import { postRandomDuck } from './commands/postRandomDuckImage';
 import { postRandomCat } from './commands/postRandomCatImage';
 import { parseTwt } from './commands/parseTwt';
+import { getWeight } from './commands/getWeight';
+import { logWeight } from './commands/logWeight';
 
 type Commands = {
     data: Partial<SlashCommandBuilder>;
@@ -18,4 +20,13 @@ const ping = {
     },
 };
 
-export const commands: Commands[] = [ping, calculateTdee, stealEmoji, postRandomDuck, postRandomCat, parseTwt];
+export const commands: Commands[] = [
+    ping,
+    calculateTdee,
+    stealEmoji,
+    postRandomDuck,
+    postRandomCat,
+    parseTwt,
+    getWeight,
+    logWeight,
+];

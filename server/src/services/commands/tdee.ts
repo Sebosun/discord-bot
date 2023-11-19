@@ -1,4 +1,5 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
+import prisma from '../../db';
 
 const NAME = 'tdee';
 const DESCRIPTION = 'Calculates tdee based on user input';
@@ -47,17 +48,16 @@ export const calculateTdee = {
                 ),
         ),
     async execute(interaction: ChatInputCommandInteraction) {
-        console.log(interaction.options);
         /* @ts-ignore */
-        const weight = interaction.options.getInteger('weight');
+        const weight = interaction.options.getInteger('weight') as int;
         /* @ts-ignore */
-        const height = interaction.options.getInteger('height');
+        const height = interaction.options.getInteger('height') as int;
         /* @ts-ignore */
-        const age = interaction.options.getInteger('age');
+        const age = interaction.options.getInteger('age') as int;
         /* @ts-ignore */
-        const sex = interaction.options.getString('sex');
+        const sex = interaction.options.getString('sex') as string;
         /* @ts-ignore */
-        const exercise = interaction.options.getString('exercise');
+        const exercise = interaction.options.getString('exercise') as string;
         if (!(weight && height && age && sex && exercise)) {
             return;
         }
@@ -70,18 +70,36 @@ export const calculateTdee = {
 
         // default val = sedentary
         let tdee = bmr * 1.2;
-
-        if (exercise === 'light') {
-            tdee = bmr * 1.375;
-        } else if (exercise === 'moderate') {
-            tdee = bmr * 1.55;
-        } else if (exercise === 'heavily') {
-            tdee = bmr * 1.725;
-        } else if (exercise === 'athlete') {
-            tdee = bmr * 1.9;
-        }
+        if (exercise === 'light') tdee = bmr * 1.375;
+        else if (exercise === 'moderate') tdee = bmr * 1.55;
+        else if (exercise === 'heavily') tdee = bmr * 1.725;
+        else if (exercise === 'athlete') tdee = bmr * 1.9;
 
         const bmi = Math.floor(getBmi(weight, height));
+        const user_id = interaction.member?.user.id;
+
+        if (user_id) {
+            try {
+                await prisma.workout.create({
+                    data: {
+                        authorID: user_id,
+                        type: exercise,
+                        tdee: tdee,
+                        height: height,
+                        weight: weight,
+                    },
+                });
+
+                await prisma.logWeight.create({
+                    data: {
+                        authorID: user_id,
+                        weight: weight,
+                    },
+                });
+            } catch (e) {
+                console.error(e);
+            }
+        }
 
         await interaction.reply(`Your TDEE is ${Math.round(tdee)}kcal. Your BMI is ${bmi}`);
     },
