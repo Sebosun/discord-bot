@@ -3,7 +3,7 @@ import { parseTwitterLink } from '../../helpers/parseTwitterLink';
 
 export const parseTwt = {
     data: new SlashCommandBuilder()
-        .setName('twt-replace')
+        .setName('twt')
         .setDescription('Replace twitter link with preview')
         .addStringOption((option) => option.setName('link').setDescription('twitter or x.com link').setRequired(true)),
     async execute(interaction: ChatInputCommandInteraction) {
